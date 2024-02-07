@@ -25,7 +25,7 @@ def updateCallback(client, callback_query,redis):
 		kup = InlineKeyboardMarkup([[InlineKeyboardButton("تعيين اميل",callback_data="setmail"),InlineKeyboardButton("تعيين عنوان",callback_data="setTit"),InlineKeyboardButton("تعيين كليشة",callback_data="settxt")],[InlineKeyboardButton("بدء spam",callback_data="spam")],[InlineKeyboardButton("قناة البوت",url="T.ME/botsLua")]])
 		redis.delete("{}:{}:Type".format(BOT_ID,userID))
 		app.answer_callback_query(callback_query.id, text="تم اللغاء الامر بنجاح")
-		app.edit_message_text(chatID, message_id,"• اهلا بك في بوت الايميلات .\n• يمكنك ارسال رسائل بريدية عن طريق اضافه اميلات .\n[Dev Bot](t.me/zzzzd)", disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN,reply_markup=kup)
+		app.edit_message_text(chatID, message_id,"• اهلا بك في بوت الايميلات .\n• يمكنك ارسال رسائل بريدية عن طريق اضافه اميلات .\n[Dev Bot](t.me/rFrFF)", disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN,reply_markup=kup)
 	if date == "spam":
 		if not redis.get("{}:{}:title".format(BOT_ID,userID)):
 			app.answer_callback_query(callback_query.id, text="⚠️ لم تقم بتعيين عنوان لرسالتك .")
@@ -71,7 +71,7 @@ def updateHandlers(client, message,redis):
 	if userID == SUDO:
 		if text ==  '/start':
 			kup = InlineKeyboardMarkup([[InlineKeyboardButton("تعيين اميل",callback_data="setmail"),InlineKeyboardButton("تعيين عنوان",callback_data="setTit"),InlineKeyboardButton("تعيين كليشة",callback_data="settxt")],[InlineKeyboardButton("بدء spam",callback_data="spam")],[InlineKeyboardButton("قناة البوت",url="T.ME/botsLua")]])
-			message.reply_text("• اهلا بك في بوت الايميلات .\n• يمكنك ارسال رسائل بريدية عن طريق اضافه اميلات .\n[Dev Bot](t.me/zzzzd)", quote=True, disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN,reply_markup=kup)
+			message.reply_text("• اهلا بك في بوت الايميلات .\n• يمكنك ارسال رسائل بريدية عن طريق اضافه اميلات .\n[Dev Bot](t.me/rFrFF)", quote=True, disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN,reply_markup=kup)
 		if text and redis.get("{}:{}:Type".format(BOT_ID,userID)) == "setTit":
 			redis.set("{}:{}:title".format(BOT_ID,userID),text)
 			redis.delete("{}:{}:Type".format(BOT_ID,userID))
